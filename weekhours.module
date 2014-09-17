@@ -214,7 +214,7 @@ function _weekhours_content() {
 		$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);
 		if($week[$weekday]){
 			$week[$weekday]['start'] = $start == $end ? '<span class="closed">CLOSED</span>' : date("g:iA", $start);
-			$week[$weekday]['end'] = $start == $end ? '' : ' to '.date("g:iA", $end);
+			$week[$weekday]['end'] = $start == $end ? '' : date("g:iA", $end);
 			if($node->field_wh_description['und'][0]['value']) $week[$weekday]['description'] = ' ('.$node->field_wh_description['und'][0]['value'].')';
 		}
 		else{

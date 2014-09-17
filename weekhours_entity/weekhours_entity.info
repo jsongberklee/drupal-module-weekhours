@@ -1,5 +1,5 @@
 name = weekhours_entity
-description = custom content type for weekhours module
+description = A custom content type for weekhours module
 core = 7.x
 package = Features
 version = 7.x-1.0

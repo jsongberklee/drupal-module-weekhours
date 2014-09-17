@@ -1,0 +1,19 @@
+name = weekhours_entity
+description = custom content type for weekhours module
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = weekhours_entity
+dependencies[] = date
+dependencies[] = features
+dependencies[] = text
+dependencies[] = datepicker
+dependencies[] = stanford_date_timepicker
+dependencies[] = auto_nodetitle
+
+features[features_api][] = api:2
+features[field_base][] = field_wh_datetime
+features[field_base][] = field_wh_description
+features[field_instance][] = node-weekhour-field_wh_datetime
+features[field_instance][] = node-weekhour-field_wh_description
+features[node][] = weekhour

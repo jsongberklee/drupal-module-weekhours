@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the weekhours_entity feature.
+ */
+
+include_once 'weekhours_entity.features.inc';

@@ -1,0 +1,10 @@
+name = Open Weekly Hours
+description = Generate a block of weekle open business hours
+dependencies[] = date
+dependencies[] = datepicker
+dependencies[] = stanford_date_timepicker
+dependencies[] = weekhour_entity
+package = Date/Time
+core = 7.x
+files[] = weekhours.module
+stylesheets[all][] = weekhours.css

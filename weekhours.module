@@ -2,8 +2,8 @@
 
 function weekhours_menu() {
   $items = array();
-  $items['admin/settings/weekhours'] = array(
-    'title' => 'Weekhours module settings',
+  $items['admin/config/regional/weekhours'] = array(
+    'title' => 'Weekhours settings',
     'description' => 'Please provide a regular week hour schedule',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('weekhours_admin'),

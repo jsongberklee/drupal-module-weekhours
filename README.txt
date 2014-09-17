@@ -1,9 +1,14 @@
-Open Hours : simple Drupal module to display weekly open business hours as a block
-==================================================================================
+Weekly Open Hours (weekhours) drupal module (v 7.x-1.xx) - 201400917
 
-Overview: coming soon~!
+* Overview ******************************************************
 
-Installation:
+Simple Drupal module to display weekly open business hours as a block
+
+coming soon~!
+
+* Installation **************************************************
+
+NOTE: This module expect you to know how to install all dependancy modules, install libraries and style with CSS file(s) in your theme folder.
 
 1. rename the folder "dp7-mod-weekhours-master" to "weekhours".
 
@@ -20,3 +25,8 @@ Installation:
 7. go to "/node/add/weekhour" to create any special / holiday / closing hours by creating each node.
 
 8. go to "/admin/structure/block", place the block "Weekly Hour Block" to anywhere in you region to display it.
+
+
+* CONTACT ******************************************************
+
+JAESUNG SONG (jsong@berklee.edu) : Maintainer

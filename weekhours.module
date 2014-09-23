@@ -12,149 +12,202 @@ function weekhours_menu() {
    );
   return $items;
 }
+
 function weekhours_admin() {
+
+	$weekhours = _get_weekhours();
+	
   $form = array();
-  $form['weekhours_mon_start'] = array(
+  $form['mon'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Monday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 8:45AM, 11:45PM"),
+  );
+  $form['mon']['mon_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Monday Open'),
-    '#default_value' => variable_get('weekhours_mon_start', '8:45AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['mon_open'],
+    '#placeholder' => '8:45AM',
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 8:45AM (8:45AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_mon_end'] = array(
+  $form['mon']['mon_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Monday Closed'),
-    '#default_value' => variable_get('weekhours_mon_end', '11:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['mon_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 11:45PM (11:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_tue_start'] = array(
+
+  $form['tue'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Tuesday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 8:45AM, 11:45PM"),
+  );
+  $form['tue']['tue_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Tuesday Open'),
-    '#default_value' => variable_get('weekhours_tue_start', '8:45AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['tue_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 8:45AM (8:45AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_tue_end'] = array(
+  $form['tue']['tue_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Tuesday Closed'),
-    '#default_value' => variable_get('weekhours_mon_end', '11:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['tue_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 11:45PM (11:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_wed_start'] = array(
+
+  $form['wed'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Wednesday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 8:45AM, 11:45PM"),
+  );
+  $form['wed']['wed_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Wednesday Open'),
-    '#default_value' => variable_get('weekhours_wed_start', '8:45AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['wed_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 8:45AM (8:45AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_wed_end'] = array(
+  $form['wed']['wed_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Wednesday Closed'),
-    '#default_value' => variable_get('weekhours_wed_end', '11:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['wed_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 11:45PM (11:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_thu_start'] = array(
+
+  $form['thu'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Thursday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 8:45AM, 11:45PM"),
+  );
+  $form['thu']['thu_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Thursday Open'),
-    '#default_value' => variable_get('weekhours_thu_start', '8:45AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['thu_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 8:45AM (8:45AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_thu_end'] = array(
+  $form['thu']['thu_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Thursday Closed'),
-    '#default_value' => variable_get('weekhours_thu_end', '11:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['thu_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 11:45PM (11:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_fri_start'] = array(
+
+  $form['fri'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Friday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 8:45AM, 9:45PM"),
+  );
+  $form['fri']['fri_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Friday Open'),
-    '#default_value' => variable_get('weekhours_fri_start', '8:45AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['fri_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 8:45AM (8:45AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_fri_end'] = array(
+  $form['fri']['fri_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Friday Closed'),
-    '#default_value' => variable_get('weekhours_fri_end', '9:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['fri_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 9:45PM (9:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_sat_start'] = array(
+
+  $form['sat'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Saturday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 10:00AM, 9:45PM"),
+  );
+  $form['sat']['sat_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Saturday Open'),
-    '#default_value' => variable_get('weekhours_sat_start', '10:00AM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['sat_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 10:00AM (10AM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_sat_end'] = array(
+  $form['sat']['sat_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Saturday Closed'),
-    '#default_value' => variable_get('weekhours_sat_end', '9:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['sat_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 9:45PM (9:45PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_sun_start'] = array(
+
+  $form['sun'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sunday'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t("Time format example: 1:00PM, 11:45PM"),
+  );
+  $form['sun']['sun_open'] = array(
     '#type' => 'textfield',
-    '#title' => t('Sunday Open'),
-    '#default_value' => variable_get('weekhours_sun_start', '1:00PM'),
+    '#title' => t('Open'),
+    '#default_value' => $weekhours['sun_open'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 1:00PM (1PM)"),
     '#required' => TRUE,
   );
-  $form['weekhours_sun_end'] = array(
+  $form['sun']['sun_close'] = array(
     '#type' => 'textfield',
-    '#title' => t('Sunday Closed'),
-    '#default_value' => variable_get('weekhours_sun_end', '11:45PM'),
+    '#title' => t('Close'),
+    '#default_value' => $weekhours['sun_close'],
     '#size' => 7,
     '#maxlength' => 7,
-    '#description' => t("Time format example: 11:45PM (11:45PM)"),
     '#required' => TRUE,
   );
   
-  return system_settings_form($form);
+  $form = system_settings_form($form);
+  $form['#submit'] = array('weekhours_admin_submit');
+  return $form;
 }
 
 function weekhours_admin_validate($form, &$form_state) {
-  /*
-$maxdisp = $form_state['values']['onthisdate_maxdisp'];
-  if (!is_numeric($maxdisp)) {
-    form_set_error('onthisdate_maxdisp', t('You must enter an integer for the maximum number of links.'));
-  }
-  elseif ($maxdisp <= 0) {
-    form_set_error('onthisdate_maxdisp', t('Maximum number of links must be positive.'));
-  }
-*/
+// proper validation needs to be built
+// Regular expresstion to check correct format as well as correct hour and minute information 
 }
+
+function weekhours_admin_submit($form, &$form_state) {
+
+	$values = array();
+	foreach($form_state['values'] as $key => $value){
+		$values[$key] = $value;
+		if($key == 'sun_close') break; 		
+	} 
+	
+	variable_set('weekhours', $values);
+}
+
 
 /**
 * Implements hook_block_info().
@@ -181,13 +234,14 @@ function weekhours_block_view($delta = '') {
 }
 function _weekhours_content() {
 
-	$week['mon'] = array('start' => variable_get('weekhours_mon_start', '8:45AM'), 'end' => variable_get('weekhours_mon_end', '11:45PM'), 'description' => ' - ');
-	$week['tue'] = array('start' => variable_get('weekhours_tue_start', '8:45AM'), 'end' => variable_get('weekhours_tue_end', '11:45PM'), 'description' => ' - ');
-	$week['wed'] = array('start' => variable_get('weekhours_wed_start', '8:45AM'), 'end' => variable_get('weekhours_wed_end', '11:45PM'), 'description' => ' - ');
-	$week['thu'] = array('start' => variable_get('weekhours_thu_start', '8:45AM'), 'end' => variable_get('weekhours_thu_end', '11:45PM'), 'description' => ' - ');
-	$week['fri'] = array('start' => variable_get('weekhours_fri_start', '8:45AM'), 'end' => variable_get('weekhours_fri_end', '11:45PM'), 'description' => ' - ');
-	$week['sat'] = array('start' => variable_get('weekhours_sat_start', '8:45AM'), 'end' => variable_get('weekhours_sat_end', '11:45PM'), 'description' => ' - ');
-	$week['sun'] = array('start' => variable_get('weekhours_sun_start', '8:45AM'), 'end' => variable_get('weekhours_sun_end', '11:45PM'), 'description' => ' - ');
+	$weekhours = _get_weekhours(); $sd = ' - ';
+	$week['mon'] = array('start' => $weekhours['mon_open'], 'end' => $weekhours['mon_close'], 'description' => $sd);
+	$week['tue'] = array('start' => $weekhours['tue_open'], 'end' => $weekhours['tue_close'], 'description' => $sd);
+	$week['wed'] = array('start' => $weekhours['wed_open'], 'end' => $weekhours['wed_close'], 'description' => $sd);
+	$week['thu'] = array('start' => $weekhours['thu_open'], 'end' => $weekhours['thu_close'], 'description' => $sd);
+	$week['fri'] = array('start' => $weekhours['fri_open'], 'end' => $weekhours['fri_close'], 'description' => $sd);
+	$week['sat'] = array('start' => $weekhours['sat_open'], 'end' => $weekhours['sat_close'], 'description' => $sd);
+	$week['sun'] = array('start' => $weekhours['sun_open'], 'end' => $weekhours['sun_close'], 'description' => $sd);
 
 	$thismonday = strtotime('monday this week');
 	$nextmonday = strtotime('monday next week');
@@ -210,12 +264,24 @@ function _weekhours_content() {
 	//dsm($nodes);
 	foreach($nodes as $node){
 		$start = $node->field_wh_datetime['und'][0]['value']; $end = $node->field_wh_datetime['und'][0]['value2'];
-		if($node->field_wh_description['und'][0]['value']) $desc = $node->field_wh_description['und'][0]['value'];
+		//if(isset($node->field_wh_description['und'][0]['value'])) $desc = $node->field_wh_description['und'][0]['value'];
 		$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);
 		if($week[$weekday]){
-			$week[$weekday]['start'] = $start == $end ? '<span class="closed">CLOSED</span>' : date("g:iA", $start);
-			$week[$weekday]['end'] = $start == $end ? '' : date("g:iA", $end);
-			if($node->field_wh_description['und'][0]['value']) $week[$weekday]['description'] = ' ('.$node->field_wh_description['und'][0]['value'].')';
+			if($start == $end){
+				$week[$weekday]['start'] = '';	
+				$week[$weekday]['end'] = '<span class="closed"> CLOSED</span>';
+				$week[$weekday]['description'] = '';
+			}
+			else
+			{
+				$week[$weekday]['start'] = date("g:iA", $start);	
+				$week[$weekday]['end'] = date("g:iA", $end);
+			}
+			if(isset($node->field_wh_description['und'][0]['value'])) $week[$weekday]['start'] = '<span class="weekhour-description">('.$node->field_wh_description['und'][0]['value'].')</span>'.$week[$weekday]['start'];
+			
+			if(node_access("update", $node, $GLOBALS['user']) === true) $week[$weekday]['start'] .= '<span class="weekhour-edit"><a href="'.url('node/'.$node->nid.'/edit', array('query' => drupal_get_destination())).'">EDIT</a></span>';
+			
+			
 		}
 		else{
 			
@@ -238,5 +304,19 @@ function _weekhours_content() {
 	';
   //$output = t('Hello world');
   return $output;
+}
+
+function _get_weekhours(){
+	$weekhours = variable_get('weekhours');
+	if(empty($weekhours)){
+		$weekhours['mon_open'] = '8:45AM';	$weekhours['mon_close'] = '11:45PM';
+		$weekhours['tue_open'] = '8:45AM';	$weekhours['tue_close'] = '11:45PM';
+		$weekhours['wed_open'] = '8:45AM';	$weekhours['wed_close'] = '11:45PM';
+		$weekhours['thu_open'] = '8:45AM';	$weekhours['thu_close'] = '11:45PM';
+		$weekhours['fri_open'] = '8:45AM';	$weekhours['fri_close'] = '9:45PM';
+		$weekhours['sat_open'] = '10:00AM';	$weekhours['sat_close'] = '9:45PM';
+		$weekhours['sun_open'] = '1:00PAM';	$weekhours['sun_close'] = '11:45PM';
+	}
+	return $weekhours;
 }
 

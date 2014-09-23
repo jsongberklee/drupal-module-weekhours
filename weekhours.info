@@ -1,4 +1,4 @@
-name = Open Weekly Hours
+name = Weekly Open Hours
 description = Generate a block of weekle open business hours
 dependencies[] = date
 dependencies[] = datepicker

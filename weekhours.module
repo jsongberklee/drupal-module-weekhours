@@ -264,7 +264,6 @@ function _weekhours_content() {
 	//dsm($nodes);
 	foreach($nodes as $node){
 		$start = $node->field_wh_datetime['und'][0]['value']; $end = $node->field_wh_datetime['und'][0]['value2'];
-		//if(isset($node->field_wh_description['und'][0]['value'])) $desc = $node->field_wh_description['und'][0]['value'];
 		$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);
 		if($week[$weekday]){
 			if($start == $end){
@@ -277,15 +276,13 @@ function _weekhours_content() {
 				$week[$weekday]['start'] = date("g:iA", $start);	
 				$week[$weekday]['end'] = date("g:iA", $end);
 			}
+			
 			if(isset($node->field_wh_description['und'][0]['value'])) $week[$weekday]['start'] = '<span class="weekhour-description">('.$node->field_wh_description['und'][0]['value'].')</span>'.$week[$weekday]['start'];
 			
+			// attach edit button if the user has Edit access for the node
 			if(node_access("update", $node, $GLOBALS['user']) === true) $week[$weekday]['start'] .= '<span class="weekhour-edit"><a href="'.url('node/'.$node->nid.'/edit', array('query' => drupal_get_destination())).'">EDIT</a></span>';
 			
-			
 		}
-		else{
-			
-		} 
 		//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']).' to '.date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value2']));
 		//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']));
 	}
@@ -302,7 +299,6 @@ function _weekhours_content() {
 			</div>
 		</div>
 	';
-  //$output = t('Hello world');
   return $output;
 }
 

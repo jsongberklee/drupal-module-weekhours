@@ -4,7 +4,6 @@ Weekly Open Hours (weekhours) drupal module (v 7.x-1.xx) - 201400917
 
 Simple Drupal module to display weekly open business hours as a block
 
-coming soon~!
 
 * Installation **************************************************
 
@@ -25,6 +24,13 @@ NOTE: This module expect you to know how to install all dependancy modules, inst
 7. go to "/node/add/weekhour" to create any special / holiday / closing hours by creating each node.
 
 8. go to "/admin/structure/block", place the block "Weekly Hour Block" to anywhere in you region to display it.
+
+
+* Usage ********************************************************
+
+Go to "/admin/structure/block" and locate "Weekly Hour Block" to any block region as you wish.
+
+"EDIT" and "Create new hour" will be shown on the block to the user with the edit weekhour content permission.
 
 
 * CONTACT ******************************************************

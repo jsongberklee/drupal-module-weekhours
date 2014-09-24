@@ -258,45 +258,46 @@ function _weekhours_content() {
 	//	dsm($result);	
 	if (isset($result['node'])) {
 		  $node_nids = array_keys($result['node']);
-		  $nodes = entity_load('node', $node_nids);
-	}
-
-	//dsm($nodes);
-	foreach($nodes as $node){
-		$start = $node->field_wh_datetime['und'][0]['value']; $end = $node->field_wh_datetime['und'][0]['value2'];
-		$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);
-		if($week[$weekday]){
-			if($start == $end){
-				$week[$weekday]['start'] = '';	
-				$week[$weekday]['end'] = '<span class="closed"> CLOSED</span>';
-				$week[$weekday]['description'] = '';
+			$nodes = entity_load('node', $node_nids);
+			//dsm(current($nodes));
+		$editAccess = node_access("update", current($nodes), $GLOBALS['user']);
+		foreach($nodes as $node){
+			$start = $node->field_wh_datetime['und'][0]['value']; $end = $node->field_wh_datetime['und'][0]['value2'];
+			$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);
+			if($week[$weekday]){
+				if($start == $end){
+					$week[$weekday]['start'] = '';	
+					$week[$weekday]['end'] = '<span class="closed"> CLOSED</span>';
+					$week[$weekday]['description'] = '';
+				}
+				else
+				{
+					$week[$weekday]['start'] = date("g:iA", $start);	
+					$week[$weekday]['end'] = date("g:iA", $end);
+				}
+				
+				if(isset($node->field_wh_description['und'][0]['value'])) $week[$weekday]['start'] = '<span class="weekhour-description">('.$node->field_wh_description['und'][0]['value'].')</span>'.$week[$weekday]['start'];
+				
+				// attach edit button if the user has Edit access for the node
+				if($editAccess === true) $week[$weekday]['start'] .= '<span class="weekhour-edit"><a href="'.url('node/'.$node->nid.'/edit', array('query' => drupal_get_destination())).'">EDIT</a></span>';
+				
 			}
-			else
-			{
-				$week[$weekday]['start'] = date("g:iA", $start);	
-				$week[$weekday]['end'] = date("g:iA", $end);
-			}
-			
-			if(isset($node->field_wh_description['und'][0]['value'])) $week[$weekday]['start'] = '<span class="weekhour-description">('.$node->field_wh_description['und'][0]['value'].')</span>'.$week[$weekday]['start'];
-			
-			// attach edit button if the user has Edit access for the node
-			if(node_access("update", $node, $GLOBALS['user']) === true) $week[$weekday]['start'] .= '<span class="weekhour-edit"><a href="'.url('node/'.$node->nid.'/edit', array('query' => drupal_get_destination())).'">EDIT</a></span>';
-			
+			//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']).' to '.date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value2']));
+			//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']));
 		}
-		//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']).' to '.date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value2']));
-		//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']));
 	}
 	$output = '	
 		<div class="weekhours-container">
-			<div class="oneweekhours">    
-				<div class="mon"><span class="weekday">Mon: </span><span class="openhours">'.$week['mon']['start'].$week['mon']['description'].$week['mon']['end'].'</span></div>
-				<div class="tue"><span class="weekday">Tue: </span><span class="openhours">'.$week['tue']['start'].$week['tue']['description'].$week['tue']['end'].'</span></div>		
-				<div class="wed"><span class="weekday">Wed: </span><span class="openhours">'.$week['wed']['start'].$week['wed']['description'].$week['wed']['end'].'</span></div>		
-				<div class="thu"><span class="weekday">Thu: </span><span class="openhours">'.$week['thu']['start'].$week['thu']['description'].$week['thu']['end'].'</span></div>		
-				<div class="fri"><span class="weekday">Fri: </span><span class="openhours">'.$week['fri']['start'].$week['fri']['description'].$week['fri']['end'].'</span></div>		
-				<div class="sat"><span class="weekday">Sat: </span><span class="openhours">'.$week['sat']['start'].$week['sat']['description'].$week['sat']['end'].'</span></div>		
-				<div class="sun"><span class="weekday">Sun: </span><span class="openhours">'.$week['sun']['start'].$week['sun']['description'].$week['sun']['end'].'</span></div>		
+			<div class="oneweekhours">
+				<div class="mon clearfix"><span class="weekday">Mon: </span><span class="openhours">'.$week['mon']['start'].$week['mon']['description'].$week['mon']['end'].'</span></div>
+				<div class="tue clearfix"><span class="weekday">Tue: </span><span class="openhours">'.$week['tue']['start'].$week['tue']['description'].$week['tue']['end'].'</span></div>		
+				<div class="wed clearfix"><span class="weekday">Wed: </span><span class="openhours">'.$week['wed']['start'].$week['wed']['description'].$week['wed']['end'].'</span></div>		
+				<div class="thu clearfix"><span class="weekday">Thu: </span><span class="openhours">'.$week['thu']['start'].$week['thu']['description'].$week['thu']['end'].'</span></div>		
+				<div class="fri clearfix"><span class="weekday">Fri: </span><span class="openhours">'.$week['fri']['start'].$week['fri']['description'].$week['fri']['end'].'</span></div>		
+				<div class="sat clearfix"><span class="weekday">Sat: </span><span class="openhours">'.$week['sat']['start'].$week['sat']['description'].$week['sat']['end'].'</span></div>		
+				<div class="sun clearfix"><span class="weekday">Sun: </span><span class="openhours">'.$week['sun']['start'].$week['sun']['description'].$week['sun']['end'].'</span></div>
 			</div>
+		  '.($editAccess === true ? '<div class="create-specialday"><a href="'.url('node/add/weekhour', array('query' => drupal_get_destination())).'">Create new hour</a></div>' : '').'
 		</div>
 	';
   return $output;

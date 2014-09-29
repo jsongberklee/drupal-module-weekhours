@@ -256,11 +256,12 @@ function _weekhours_content() {
 	  ->fieldOrderBy('field_wh_datetime', 'value', 'ASC');
 	$result = $query->execute();
 	//	dsm($result);	
+	$editAccess = node_access("update", "weekhour", $GLOBALS['user']);
 	if (isset($result['node'])) {
 		  $node_nids = array_keys($result['node']);
 			$nodes = entity_load('node', $node_nids);
 			//dsm(current($nodes));
-		$editAccess = node_access("update", current($nodes), $GLOBALS['user']);
+		//$editAccess = node_access("update", current($nodes), $GLOBALS['user']);
 		foreach($nodes as $node){
 			$start = $node->field_wh_datetime['und'][0]['value']; $end = $node->field_wh_datetime['und'][0]['value2'];
 			$weekday = strtolower(date("D", $start)); //$weekday = date("D Ymd g:iA", $start);

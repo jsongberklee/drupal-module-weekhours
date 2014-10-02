@@ -242,7 +242,7 @@ function _weekhours_content() {
 	$week['fri'] = array('start' => $weekhours['fri_open'], 'end' => $weekhours['fri_close'], 'description' => $sd);
 	$week['sat'] = array('start' => $weekhours['sat_open'], 'end' => $weekhours['sat_close'], 'description' => $sd);
 	$week['sun'] = array('start' => $weekhours['sun_open'], 'end' => $weekhours['sun_close'], 'description' => $sd);
-
+	$today = strtolower(date('D')); $week[$today]['today'] = true;
 	$thismonday = strtotime('monday this week');
 	$nextmonday = strtotime('monday next week');
 	//dsm('this monday : '.$thismonday.' (gmdate->'.gmdate("Ymd H:i", $thismonday).' ) '.' (date->'.date("Ymd H:i", $thismonday).' ) ');
@@ -287,16 +287,18 @@ function _weekhours_content() {
 			//dsm(date("D Ymd g:iA", $node->field_wh_datetime['und'][0]['value']));
 		}
 	}
+	
+	$todayMark = '*'; 
 	$output = '	
 		<div class="weekhours-container">
 			<div class="oneweekhours">
-				<div class="mon clearfix"><span class="weekday">Mon: </span><span class="openhours">'.$week['mon']['start'].$week['mon']['description'].$week['mon']['end'].'</span></div>
-				<div class="tue clearfix"><span class="weekday">Tue: </span><span class="openhours">'.$week['tue']['start'].$week['tue']['description'].$week['tue']['end'].'</span></div>		
-				<div class="wed clearfix"><span class="weekday">Wed: </span><span class="openhours">'.$week['wed']['start'].$week['wed']['description'].$week['wed']['end'].'</span></div>		
-				<div class="thu clearfix"><span class="weekday">Thu: </span><span class="openhours">'.$week['thu']['start'].$week['thu']['description'].$week['thu']['end'].'</span></div>		
-				<div class="fri clearfix"><span class="weekday">Fri: </span><span class="openhours">'.$week['fri']['start'].$week['fri']['description'].$week['fri']['end'].'</span></div>		
-				<div class="sat clearfix"><span class="weekday">Sat: </span><span class="openhours">'.$week['sat']['start'].$week['sat']['description'].$week['sat']['end'].'</span></div>		
-				<div class="sun clearfix"><span class="weekday">Sun: </span><span class="openhours">'.$week['sun']['start'].$week['sun']['description'].$week['sun']['end'].'</span></div>
+				<div class="mon '.(isset($week['mon']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['mon']['today']) ? 'today ">'.$todayMark : '">').'Mon: </span><span class="openhours">'.$week['mon']['start'].$week['mon']['description'].$week['mon']['end'].'</span></div>
+				<div class="tue '.(isset($week['tue']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['tue']['today']) ? 'today ">'.$todayMark : '">').'Tue: </span><span class="openhours">'.$week['tue']['start'].$week['tue']['description'].$week['tue']['end'].'</span></div>		
+				<div class="wed '.(isset($week['wed']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['wed']['today']) ? 'today ">'.$todayMark : '">').'Wed: </span><span class="openhours">'.$week['wed']['start'].$week['wed']['description'].$week['wed']['end'].'</span></div>		
+				<div class="thu '.(isset($week['thu']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['thu']['today']) ? 'today ">'.$todayMark : '">').'Thu: </span><span class="openhours">'.$week['thu']['start'].$week['thu']['description'].$week['thu']['end'].'</span></div>		
+				<div class="fri '.(isset($week['fri']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['fri']['today']) ? 'today ">'.$todayMark : '">').'Fri: </span><span class="openhours">'.$week['fri']['start'].$week['fri']['description'].$week['fri']['end'].'</span></div>		
+				<div class="sat '.(isset($week['sat']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['sat']['today']) ? 'today ">'.$todayMark : '">').'Sat: </span><span class="openhours">'.$week['sat']['start'].$week['sat']['description'].$week['sat']['end'].'</span></div>		
+				<div class="sun '.(isset($week['sun']['today']) ? 'today' : '').' clearfix"><span class="weekday '.(isset($week['sun']['today']) ? 'today ">'.$todayMark : '">').'Sun: </span><span class="openhours">'.$week['sun']['start'].$week['sun']['description'].$week['sun']['end'].'</span></div>
 			</div>
 		  '.($editAccess === true ? '<div class="create-specialday"><a href="'.url('node/add/weekhour', array('query' => drupal_get_destination())).'">Create new hour</a></div>' : '').'
 		</div>

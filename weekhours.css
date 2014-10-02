@@ -3,6 +3,7 @@
 .openhours .closed{color: #f00;}
 .weekhours-container{margin-bottom: 1em;}
 .oneweekhours{}
+.oneweekhours .today{font-weight: bold; color: green}
 .weekday{}
 .weekhour-edit{position:absolute; right:-20px; font-size: 70%; font-weight: bolder; background-color: yellow; /* -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75); */}
 .weekhour-description{font-weight: bold}

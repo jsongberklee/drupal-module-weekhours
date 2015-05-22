@@ -38,3 +38,5 @@ For closing day, setting the start and end hours to 00:00 will display the descr
 * CONTACT ******************************************************
 
 JAESUNG SONG (jsong@berklee.edu) : Maintainer
+
+Last updated on May 22, 2015

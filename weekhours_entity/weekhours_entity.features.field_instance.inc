@@ -14,7 +14,7 @@ function weekhours_entity_field_default_field_instances() {
   $field_instances['node-weekhour-field_wh_datetime'] = array(
     'bundle' => 'weekhour',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Set the time to 00:00 for both start and end time for closing whole day.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -68,7 +68,7 @@ function weekhours_entity_field_default_field_instances() {
     'bundle' => 'weekhour',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Weekly Hour description',
+    'description' => 'Type a description for this custom day, this should be less than 16 characters.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',

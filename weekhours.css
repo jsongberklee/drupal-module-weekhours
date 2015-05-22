@@ -1,11 +1,45 @@
 #weekhours-admin .form-item{float:left; margin: 0 6px;}
+#weekhours-admin .form-item-relative-day{float:none;}
 .openhours{float:right;}
-.openhours .closed{color: #f00;}
-.weekhours-container{margin-bottom: 1em;}
-.oneweekhours{}
-.oneweekhours .today{font-weight: bold; color: green}
+.openhours .closed{/* color: #f00; */}
+.weekhours-container{}
+.oneweekhours div{border: 1px solid #616A7F;border-bottom: 0; padding: 9px 8px;  font-size: 13px;}
+.oneweekhours{border-bottom: 1px solid #616A7F;}
+/* .oneweekhours div.sun{border-bottom: 1px solid #616A7F;} */
+/* .oneweekhours div.sat{border-bottom: 1px solid #616A7F;} */
+.oneweekhours .today{color: #fff; background-color: #616A7F}
 .weekday{}
-.weekhour-edit{position:absolute; right:-20px; font-size: 70%; font-weight: bolder; background-color: yellow; /* -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75); */}
-.weekhour-description{font-weight: bold}
-.weekhours-container .create-specialday{position:relative; font-size: 70%; font-weight: bolder; background-color: #eee;}
+.weekhour-edit{position:absolute; right:0px; font-size: 70%; font-weight: bolder; background-color: yellow; /* -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75); */}
+.weekhour-description{}
+.weekhours-container .create-specialday{position:relative; font-size: 70%; font-weight: bolder; background-color: yellow; margin-top: 2px; text-transform: uppercase;}
 .weekhours-container .create-specialday a{display:block}
+
+.odd-weekhours{background-color: #f2f2f2;}
+.even-weekhours{background-color: #f9f9f9;}
+
+section.large-3 span.weekhour-description{display:none;}
+
+.oneweekhours div.custom span.title {
+	display:none;
+}
+.oneweekhours div.custom:hover {
+    cursor: help;
+    position: relative;
+}
+.oneweekhours div.custom:hover span.title {
+    border: #616A7F 1px solid;
+    background-color: #616A7F;
+    color:#fff;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    left: 0px;
+    margin: 10px;
+    width: auto;
+    position: absolute;
+    top: 16px;
+    text-decoration: none;
+    -moz-box-shadow: 0px 0px 2px #aaa;
+		-webkit-box-shadow: 0px 0px 2px #aaa;
+		box-shadow: 0px 0px 2px #aaa;
+}

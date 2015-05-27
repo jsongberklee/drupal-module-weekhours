@@ -187,11 +187,12 @@ function weekhours_admin() {
     '#required' => TRUE,
   );
   
+  $description = 'Displays the start of the 7 day list from today ('.date('D').')';
   $form['relative_day'] = array(
     '#type' => 'checkbox',
     '#title' => t('<strong>Relative display</strong>'),
     '#default_value' => $weekhours['relative_day'],
-    '#description' => t('Use today as first day, a 7 day list from today instead of static week(Sun ~ Sat) display.'),
+    '#description' => $descirption,
     '#required' => FALSE
   );
   
